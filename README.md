@@ -3,7 +3,7 @@
 ![logo](https://github.com/user-attachments/assets/169ee8cd-3384-43cc-9fe8-4504338483e4)
 
 > **Clean data. Trust results.**  
-> CuraSet helps you detect label noise, quantify uncertainty, and improve dataset hygiene — because better data means better models.
+> CuraSet helps you detect label noise, quantify uncertainty, and improve dataset hygiene, because better data means better models.
 
 
 ---
