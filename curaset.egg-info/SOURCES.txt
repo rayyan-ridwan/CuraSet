@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+curaset.egg-info/PKG-INFO
+curaset.egg-info/SOURCES.txt
+curaset.egg-info/dependency_links.txt
+curaset.egg-info/entry_points.txt
+curaset.egg-info/requires.txt
+curaset.egg-info/top_level.txt

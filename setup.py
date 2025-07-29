@@ -1,10 +1,14 @@
 from setuptools import setup, find_packages
+import codecs
+
+with codecs.open("README.md", encoding="utf-8") as f:
+    long_description = f.read()
 
 setup(
     name='curaset',
     version='0.1.0',
     description='A data-centric AI tool for label noise detection and uncertainty scoring',
-    long_description=open('README.md').read(),
+    long_description=long_description,
     long_description_content_type='text/markdown',
     author='Rayyan Ridwan',
     author_email='rayyan.ridw@gmail.com',
