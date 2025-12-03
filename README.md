@@ -1,4 +1,7 @@
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Special+Gothic+Expanded+One\&pause=1000\&color=008000\&center=true\&vCenter=true\&width=600\&lines=CuraSet)](https://git.io/typing-svg)
+<div align="center">
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Special+Gothic+Expanded+One\&pause=1000\&color=32CD32\&center=true\&vCenter=true\&width=600\&lines=CuraSet)](https://git.io/typing-svg)
+</div>
 
 ![logo](https://github.com/user-attachments/assets/169ee8cd-3384-43cc-9fe8-4504338483e4)
 
