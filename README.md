@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" size="150%">
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Special+Gothic+Expanded+One\&pause=1000\&color=32CD32\&center=true\&vCenter=true\&width=1200\&lines=CuraSet)](https://git.io/typing-svg)
 </div>
