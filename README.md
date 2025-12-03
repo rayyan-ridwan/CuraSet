@@ -54,7 +54,7 @@ pip install -e .
 
 ## Usage (W.I.P)
 
-### 🛠 Option 1: CLI (Command Line)
+### Option 1: CLI (Command Line)
 
 ```bash
 curaset detect-noise \
