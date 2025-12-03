@@ -8,33 +8,32 @@
 
 ---
 
-## ✨ Overview
+## Overview:
 
-Machine learning models are only as good as the data they train on.  
-**CuraSet** is an open-source tool for **data-centric AI**, focused on:
-
-- 🔍 Identifying **label noise** in datasets
-- 📉 Estimating **sample-level uncertainty**
-- 📊 Visualizing and exporting **data quality reports**
-- ⚙️ Integrating seamlessly with your existing PyTorch or scikit-learn workflows
+Machine learning models are only as good as the data they train on, BUT.  
+**CuraSet** is a W.I.P open-source tool for **data-centric AI**, focused on:
+- Identifying **label noise** in datasets
+- Estimating **sample-level uncertainty**
+- Visualizing and exporting **data quality reports**
+- Integrating seamlessly with your existing PyTorch or scikit-learn workflows
 
 Use CuraSet as a **CLI tool**, **Python library**, or integrate it into your **training pipeline**.
 
 ---
 
-## 🔧 Features
+## Features
 
 | Feature | Description |
 |--------|-------------|
-| 🧪 Label Noise Detection | Detect mislabeled examples using confident learning, disagreement, or uncertainty |
-| 🎯 Uncertainty Scoring | Entropy, margin sampling, variance over ensemble predictions |
-| 📊 Hygiene Reports | Visual and tabular reports of dataset quality |
-| 🛠 CLI + API | Run from terminal or import into your pipeline |
-| 💾 Export Options | Export clean splits, noise masks, or quality scores to CSV |
+| Label Noise Detection | Detect mislabeled examples using confident learning, disagreement, or uncertainty |
+| Uncertainty Scoring | Entropy, margin sampling, variance over ensemble predictions |
+| Hygiene Reports | Visual and tabular reports of dataset quality |
+| CLI + API | Run from terminal or import into your pipeline |
+| Export Options | Export clean splits, noise masks, or quality scores to CSV |
 
 ---
 
-## Installation
+## Installation (TO BE ACCESIBLE)
 
 ```bash
 pip install curaset
@@ -50,7 +49,7 @@ pip install -e .
 
 ---
 
-## Usage
+## Usage (W.I.P)
 
 ### 🛠 Option 1: CLI (Command Line)
 
@@ -71,7 +70,7 @@ curaset score-uncertainty \
     --output entropy_scores.csv
 ```
 
-### 🧑‍💻 Option 2: Python API
+### Option 2: Python API
 
 ```python
 from curaset.noise_detect import disagreement_score
@@ -92,7 +91,7 @@ noise_scores = disagreement_score(ensemble_preds.T)
 
 ---
 
-## 📊 Output Files
+## Output Files
 
 | File                     | Description                            |
 | ------------------------ | -------------------------------------- |
@@ -103,7 +102,7 @@ noise_scores = disagreement_score(ensemble_preds.T)
 
 ---
 
-## 🧪 Example: Run on CIFAR-10
+## Example: Run on CIFAR-10
 
 ```bash
 curaset detect-noise \
@@ -130,7 +129,7 @@ curaset report \
 
 ---
 
-## 📈 Planned Features (Want to help?)
+## Planned Features (Want to help?)
 * [ ] Implementation and design functionality
 * [ ] Bootstrap-based confidence intervals for noise/uncertainty
 * [ ] GUI dashboard (maybe Streamlit)
@@ -140,20 +139,19 @@ curaset report \
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 CuraSet is open to all contributors, researchers, students, developers.
 Read [`CONTRIBUTING.md`](./CONTRIBUTING.md) to get started.
 
 ---
 
-## 📄 License
-
+## License
 MIT License | free for academic, commercial, and personal use.
 
 ---
 
-## 👨‍🔬 Maintainer
+## Maintainer
 
 Built and maintained by [Rayyan Ridwan](https://github.com/rayyan-ridwan), with ❤️ for data quality and open science.
 
