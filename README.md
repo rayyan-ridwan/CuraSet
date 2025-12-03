@@ -33,7 +33,7 @@ Use CuraSet as a **CLI tool**, **Python library**, or integrate it into your **t
 
 ---
 
-## Installation (TO BE ACCESIBLE)
+## Installation (TO BE ACCESSIBLE)
 
 ```bash
 pip install curaset
