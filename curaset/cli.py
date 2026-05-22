@@ -1,24 +1,61 @@
-import matplotlib.pyplot as plt
-import torchvision.utils
+from __future__ import annotations
+
 import argparse
-from curaset.dataset.registry import get_dataset
 
 
-def main(data):
-    for images, labels in data:
-        grid = torchvision.utils.make_grid(images, nrow=8)
-        plt.figure(figsize=(15, 8))
-        plt.imshow(grid.permute(1, 2, 0))  # Convert CHW to HWC
-        plt.title("Sample Image Batch")
-        plt.axis('off')
-        plt.show()
+def _preview_batch(batch):
+    try:
+        import matplotlib.pyplot as plt
+        from torchvision.utils import make_grid
+    except ImportError as exc:  # pragma: no cover - depends on optional deps
+        raise RuntimeError(
+            "Previewing batches requires matplotlib and torchvision."
+        ) from exc
+
+    images, _labels = batch
+    grid = make_grid(images, nrow=8)
+    plt.figure(figsize=(14, 8))
+    plt.imshow(grid.permute(1, 2, 0))
+    plt.title("Dataset preview")
+    plt.axis("off")
+    plt.show()
+    plt.close()
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(prog="curaset")
+    subparsers = parser.add_subparsers(dest="command")
+
+    preview = subparsers.add_parser("preview", help="Preview a dataset batch")
+    preview.add_argument("--dataset", required=True, help="Dataset name or path")
+    preview.add_argument("--batch-size", type=int, default=32)
+    preview.add_argument("--train", action="store_true", help="Use the training split")
+    preview.add_argument("--download", action="store_true", help="Download built-in datasets")
+
+    args = parser.parse_args(argv)
+
+    if args.command is None:
+        parser.print_help()
+        return 0
+
+    try:
+        from curaset.dataset.registry import get_dataset
+    except ImportError:  # pragma: no cover - depends on optional deps
+        print("CuraSet preview requires the dataset dependencies to be installed.")
+        return 2
+
+    data = get_dataset(
+        args.dataset,
+        batch_size=args.batch_size,
+        train=args.train,
+        download=args.download,
+    )
+    print(f"Loaded dataset: {args.dataset}")
+
+    batch = next(iter(data))
+    _preview_batch(batch)
+    return 0
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset', type=str, required=True)
-    args = parser.parse_args()
-
-    data = get_dataset(args.dataset)
-    print(f"Loaded dataset: {args.dataset}")
-    main(data)
+    raise SystemExit(main())
