@@ -20,6 +20,11 @@ setup(
     ],
     install_requires=[
         'numpy',
+        'pandas',
+        'pillow',
+        'matplotlib',
+        'torch',
+        'torchvision',
         'scikit-learn',
     ],
     entry_points={

@@ -1,167 +1,71 @@
-<div align="center" >
+# CuraSet
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Special+Gothic+Expanded+One\&size=50&pause=50\&color=32CD32\&center=true\&vCenter=true\&width=1200\&lines=CuraSet)](https://git.io/typing-svg)
-</div>
+<p align="center">
+  <strong>Clean data. Better models.</strong>
+</p>
 
-![logo](https://github.com/user-attachments/assets/169ee8cd-3384-43cc-9fe8-4504338483e4)
+CuraSet is a lightweight Python toolkit for dataset inspection, image previewing, and the early building blocks of label-noise and uncertainty workflows.
 
-> **Clean data. Trust results.**  
-> CuraSet helps you detect label noise, quantify uncertainty, and improve dataset hygiene, because better data means better models.
+## What it does
 
+- Load common vision datasets like CIFAR-10 and MNIST
+- Preview image batches from folders, CSV manifests, or built-in datasets
+- Provide a small, clean package structure for expanding into data-quality tooling
 
----
-
-## Overview:
-
-Machine learning models are only as good as the data they train on, BUT.  
-**CuraSet** is a W.I.P open-source tool for **data-centric AI**, focused on:
-- Identifying **label noise** in datasets
-- Estimating **sample-level uncertainty**
-- Visualizing and exporting **data quality reports**
-- Integrating seamlessly with your existing PyTorch or scikit-learn workflows
-
-Use CuraSet as a **CLI tool**, **Python library**, or integrate it into your **training pipeline**.
-
----
-
-## Features
-
-| Feature | Description |
-|--------|-------------|
-| Label Noise Detection | Detect mislabeled examples using confident learning, disagreement, or uncertainty |
-| Uncertainty Scoring | Entropy, margin sampling, variance over ensemble predictions |
-| Hygiene Reports | Visual and tabular reports of dataset quality |
-| CLI + API | Run from terminal or import into your pipeline |
-| Export Options | Export clean splits, noise masks, or quality scores to CSV |
-
----
-
-## Installation (TO BE ACCESSIBLE)
+## Installation
 
 ```bash
-pip install curaset
-````
-
-Or install from source:
-
-```bash
-git clone https://github.com/rayyan-ridwan/CuraSet.git
-cd CuraSet
 pip install -e .
 ```
 
----
+## Quick start
 
-## Usage (W.I.P)
-
-### Option 1: CLI (Command Line)
+Preview a dataset batch:
 
 ```bash
-curaset detect-noise \
-    --dataset cifar10 \
-    --method disagreement \
-    --threshold 0.2 \
-    --output noise_mask.csv
+curaset preview --dataset cifar
 ```
 
-Or run uncertainty scoring:
+Load a local folder or CSV manifest:
 
 ```bash
-curaset score-uncertainty \
-    --logits logits.npy \
-    --metric entropy \
-    --output entropy_scores.csv
+curaset preview --dataset /path/to/dataset
 ```
 
-### Option 2: Python API
+## Package structure
 
-```python
-from curaset.noise_detect import disagreement_score
-from curaset.uncertainty import entropy
-
-# Logits from ensemble or saved model
-logits = np.load("logits.npy")
-probs = softmax(logits, axis=1)
-
-# Calculate entropy
-unc_scores = entropy(probs)
-
-# Detect noise
-preds = np.argmax(probs, axis=1)
-ensemble_preds = np.stack([preds, preds, preds])  # Simulate ensemble
-noise_scores = disagreement_score(ensemble_preds.T)
+```text
+curaset/
+├── __init__.py
+├── cli.py
+├── dataset/
+│   ├── __init__.py
+│   ├── cifar.py
+│   ├── custom.py
+│   ├── mnist.py
+│   └── registry.py
+├── detectors/
+├── reports/
+└── uncertainty/
 ```
 
----
+## Roadmap
 
-## Output Files
+- Dataset quality checks
+- Sample-level uncertainty scoring
+- Noise detection strategies
+- Exportable reports and summaries
 
-| File                     | Description                            |
-| ------------------------ | -------------------------------------- |
-| `noise_mask.csv`         | Binary mask (1 = noisy)                |
-| `uncertainty_scores.csv` | Sample-wise uncertainty values         |
-| `clean_data.csv`         | Export of filtered/clean dataset       |
-| `report.md`              | Summary of noise and uncertainty stats |
-
----
-
-## Example: Run on CIFAR-10
+## Development
 
 ```bash
-curaset detect-noise \
-    --dataset cifar10 \
-    --method entropy \
-    --threshold 0.15
+python -m compileall curaset
 ```
-
-Or try with your own model logits:
-
-```bash
-curaset score-uncertainty \
-    --logits saved_logits.npy \
-    --metric margin
-```
-
-Or you can generate a noise report:
-```bash
-curaset report \
-    --noise noise_mask.csv \
-    --uncertainty entropy_scores.csv \
-    --output report.md
-```
-
----
-
-## Planned Features (Want to help?)
-* [ ] Implementation and design functionality
-* [ ] Bootstrap-based confidence intervals for noise/uncertainty
-* [ ] GUI dashboard (maybe Streamlit)
-* [ ] Support for HuggingFace datasets
-* [ ] Visualizer for noisy samples
-* [ ] Integration with `cleanlab`, `wandb`, `label-studio`
-
----
 
 ## Contributing
 
-CuraSet is open to all contributors, researchers, students, developers.
-Read [`CONTRIBUTING.md`](./CONTRIBUTING.md) to get started.
-
----
+Contributions are welcome. See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## License
-MIT License | free for academic, commercial, and personal use.
 
----
-
-## Maintainer
-
-Built and maintained by [Rayyan Ridwan](https://github.com/rayyan-ridwan), with ❤️ for data quality and open science.
-
----
-
-## 🌍 Join the Community
-
-Open a [GitHub Discussion](https://github.com/CuraSet/discussions) to share ideas, questions, or feedback.
-
----
+MIT
