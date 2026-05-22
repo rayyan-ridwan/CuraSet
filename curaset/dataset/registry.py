@@ -1,6 +1,7 @@
 from . import cifar, mnist, custom
 
 DATASET_REGISTRY = {
+    "cifar10": cifar.load,
     "cifar": cifar.load,
     "mnist": mnist.load,
     "custom": custom.load,

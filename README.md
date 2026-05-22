@@ -18,12 +18,18 @@ CuraSet is a lightweight Python toolkit for dataset inspection, image previewing
 pip install -e .
 ```
 
+For dataset preview features:
+
+```bash
+pip install -e .[preview]
+```
+
 ## Quick start
 
 Preview a dataset batch:
 
 ```bash
-curaset preview --dataset cifar
+curaset preview --dataset cifar10 --download
 ```
 
 Load a local folder or CSV manifest:

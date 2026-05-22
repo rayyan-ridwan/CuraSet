@@ -20,13 +20,17 @@ setup(
     ],
     install_requires=[
         'numpy',
-        'pandas',
-        'pillow',
-        'matplotlib',
-        'torch',
-        'torchvision',
         'scikit-learn',
     ],
+    extras_require={
+        'preview': [
+            'pandas',
+            'pillow',
+            'matplotlib',
+            'torch>=1.13,<2.1',
+            'torchvision>=0.14,<0.16',
+        ],
+    },
     entry_points={
         'console_scripts': [
             'curaset=curaset.cli:main',

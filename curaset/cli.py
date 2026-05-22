@@ -19,6 +19,7 @@ def _preview_batch(batch):
     plt.title("Dataset preview")
     plt.axis("off")
     plt.show()
+    plt.close()
 
 
 def main(argv=None):
@@ -29,15 +30,13 @@ def main(argv=None):
     preview.add_argument("--dataset", required=True, help="Dataset name or path")
     preview.add_argument("--batch-size", type=int, default=32)
     preview.add_argument("--train", action="store_true", help="Use the training split")
-    preview.add_argument("--download", dest="download", action="store_true", help="Download built-in datasets")
-    preview.add_argument("--no-download", dest="download", action="store_false", help="Do not download built-in datasets")
-    preview.set_defaults(download=True)
+    preview.add_argument("--download", action="store_true", help="Download built-in datasets")
 
     args = parser.parse_args(argv)
 
-    if args.command != "preview":
+    if args.command is None:
         parser.print_help()
-        return 1
+        return 0
 
     try:
         from curaset.dataset.registry import get_dataset
